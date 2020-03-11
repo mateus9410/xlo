@@ -23,6 +23,23 @@ class _CreateScreenState extends State<CreateScreen> {
         child: ListView(
           children: <Widget>[
             ImagesField(),
+            Container(
+              height: 50,
+              child: RaisedButton(
+                color: Colors.pink,
+                child: Text(
+                  'Enviar',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                onPressed: () {
+                  if (_formKey.currentState.validate()) {}
+                },
+              ),
+            ),
           ],
         ),
       ),

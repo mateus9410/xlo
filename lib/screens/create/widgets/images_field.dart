@@ -7,6 +7,10 @@ class ImagesField extends StatelessWidget {
   Widget build(BuildContext context) {
     return FormField<List>(
       initialValue: [],
+      validator: (images) {
+        if (images.isEmpty) return 'Campo obrigatorio';
+        return null;
+      },
       builder: (state) {
         return Column(
           children: <Widget>[
@@ -23,7 +27,8 @@ class ImagesField extends StatelessWidget {
                           showModalBottomSheet(
                               context: context,
                               builder: (context) => ImageSourceSheet((image) {
-                                    state.didChange(state.value..add(image));
+                                    if (image != null)
+                                      state.didChange(state.value..add(image));
                                     Navigator.of(context).pop();
                                   }));
                         },
@@ -50,9 +55,48 @@ class ImagesField extends StatelessWidget {
                           ),
                         ),
                       );
-                    return Container();
+                    return GestureDetector(
+                      onTap: () {
+                        showDialog(
+                            context: context,
+                            builder: (context) => Dialog(
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: <Widget>[
+                                      Image.file(state.value[index]),
+                                      FlatButton(
+                                        child: const Text('Excluir'),
+                                        textColor: Colors.red,
+                                        onPressed: () {
+                                          state.didChange(
+                                              state.value..remove(index));
+                                          Navigator.of(context).pop();
+                                        },
+                                      )
+                                    ],
+                                  ),
+                                ));
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                            left: 16, top: 16, bottom: 16),
+                        child: CircleAvatar(
+                          backgroundImage: FileImage(state.value[index]),
+                        ),
+                      ),
+                    );
                   }),
-            )
+            ),
+            if (state.hasError)
+              Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  state.errorText,
+                  style: TextStyle(color: Colors.red, fontSize: 12),
+                ),
+              )
           ],
         );
       },
