@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:xlo/models/filter.dart';
+import 'package:xlo/screens/filter/widgets/animated_button.dart';
 import 'package:xlo/screens/filter/widgets/order_by_field.dart';
 import 'package:xlo/screens/filter/widgets/price_range_field.dart';
 import 'package:xlo/screens/filter/widgets/section_title.dart';
 import 'package:xlo/screens/filter/widgets/vendor_type_field.dart';
-import 'package:xlo/screens/home/widgets/animeted_button.dart';
 
 class FilterScreen extends StatefulWidget {
   @override
@@ -70,12 +70,14 @@ class _FilterScreenState extends State<FilterScreen> {
                 if (_filter.maxPrice != null && _filter.minPrice != null) {
                   if (_filter.minPrice > _filter.maxPrice) {
                     _scaffoldKey.currentState.showSnackBar(SnackBar(
-                      content: const Text('Faixa de preço invávlida'),
+                      content: const Text('Faixa de preço inválida'),
+                      backgroundColor: Colors.pink,
                     ));
                     return;
                   }
                 }
-                // SALVAR TUDO E PESQUISAR ANUNCIOS !!
+
+                // SALVAR TUDO E PESQUISAR ANUNCIOS!!!
               }
             },
           )

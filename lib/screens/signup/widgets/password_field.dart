@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class PasswordField extends StatelessWidget {
@@ -56,7 +55,7 @@ class PasswordField extends StatelessWidget {
               padding: const EdgeInsets.only(top: 6, left: 10),
               child: state.value.isNotEmpty || state.hasError
                   ? Text(
-                      state.value.isNotEmpty || state.hasError
+                      state.value.isNotEmpty
                           ? _getText(_calcScore(state.value))
                           : state.errorText,
                       textAlign: TextAlign.start,

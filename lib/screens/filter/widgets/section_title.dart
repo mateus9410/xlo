@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class SectionTitle extends StatelessWidget {
-
   const SectionTitle({this.title});
 
   final String title;

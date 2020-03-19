@@ -13,7 +13,7 @@ class LoginButton extends StatelessWidget {
       margin: const EdgeInsets.symmetric(vertical: 24),
       height: 50,
       child: StreamBuilder<ButtonState>(
-        stream: loginBloc.outLoginBuntton,
+        stream: loginBloc.outLoginButton,
         initialData: ButtonState(enabled: false, loading: false),
         builder: (context, snapshot) {
           return RaisedButton(

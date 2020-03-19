@@ -1,9 +1,8 @@
 import 'package:rxdart/rxdart.dart';
 import 'package:xlo/blocs/login/button_state.dart';
+import 'package:xlo/blocs/login/field_state.dart';
 import 'package:xlo/blocs/login/login_bloc_state.dart';
 import 'package:xlo/validators/login_validators.dart';
-
-import 'field_state.dart';
 
 class LoginBloc with LoginValidator {
   final BehaviorSubject<LoginBlocState> _stateController =
@@ -23,13 +22,13 @@ class LoginBloc with LoginValidator {
       });
 
   Stream<FieldState> get outPassword => Rx.combineLatest2(
-          _passwordController.stream.transform(passwordvalidator), outState,
+          _passwordController.stream.transform(passwordValidator), outState,
           (a, b) {
         a.enabled = b.state != LoginState.LOADING;
         return a;
       });
 
-  Stream<ButtonState> get outLoginBuntton =>
+  Stream<ButtonState> get outLoginButton =>
       Rx.combineLatest3(outEmail, outPassword, outState, (a, b, c) {
         return ButtonState(
             loading: c.state == LoginState.LOADING,
@@ -48,7 +47,7 @@ class LoginBloc with LoginValidator {
   }
 
   Future<bool> loginWithFacebook() async {
-    _stateController.add(LoginBlocState(LoginState.LOAD_FACE));
+    _stateController.add(LoginBlocState(LoginState.LOADING_FACE));
 
     await Future.delayed(Duration(seconds: 3));
 

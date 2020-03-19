@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AnimatedButton extends StatefulWidget {
@@ -14,7 +13,7 @@ class AnimatedButton extends StatefulWidget {
 class _AnimatedButtonState extends State<AnimatedButton>
     with SingleTickerProviderStateMixin {
   AnimationController _controller;
-  Animation<EdgeInsets> _edgeanimation;
+  Animation<EdgeInsets> _edgeAnimation;
   Animation<double> _radiusAnimation;
 
   ScrollController get scrollController => widget.scrollController;
@@ -27,7 +26,7 @@ class _AnimatedButtonState extends State<AnimatedButton>
     _controller = AnimationController(
         vsync: this, duration: const Duration(milliseconds: 200));
 
-    _edgeanimation = EdgeInsetsTween(
+    _edgeAnimation = EdgeInsetsTween(
             begin: const EdgeInsets.fromLTRB(16, 0, 16, 16),
             end: EdgeInsets.zero)
         .animate(_controller);
@@ -64,7 +63,7 @@ class _AnimatedButtonState extends State<AnimatedButton>
           right: 0,
           child: Container(
             height: 50,
-            margin: _edgeanimation.value,
+            margin: _edgeAnimation.value,
             child: RaisedButton(
               color: Colors.pink,
               child: const Text(

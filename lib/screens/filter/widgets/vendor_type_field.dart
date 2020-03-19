@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:xlo/models/filter.dart';
 
 class VendorTypeField extends StatelessWidget {
-
   VendorTypeField({this.onSaved, this.initialValue});
 
   final FormFieldSetter<int> onSaved;
@@ -13,13 +12,13 @@ class VendorTypeField extends StatelessWidget {
     return FormField<int>(
       initialValue: initialValue,
       onSaved: onSaved,
-      builder: (state){
+      builder: (state) {
         return Row(
           children: <Widget>[
             GestureDetector(
-              onTap: (){
-                if(state.value & VENDOR_TYPE_PARTICULAR != 0){
-                  if(state.value & VENDOR_TYPE_PROFESSIONAL != 0)
+              onTap: () {
+                if (state.value & VENDOR_TYPE_PARTICULAR != 0) {
+                  if (state.value & VENDOR_TYPE_PROFESSIONAL != 0)
                     state.didChange(state.value & ~VENDOR_TYPE_PARTICULAR);
                   else
                     state.didChange(VENDOR_TYPE_PROFESSIONAL);
@@ -31,25 +30,31 @@ class VendorTypeField extends StatelessWidget {
                 height: 50,
                 width: 120,
                 decoration: BoxDecoration(
-                    border: Border.all(color: state.value & VENDOR_TYPE_PARTICULAR != 0 ?
-                      Colors.transparent : Colors.grey),
+                    border: Border.all(
+                        color: state.value & VENDOR_TYPE_PARTICULAR != 0
+                            ? Colors.transparent
+                            : Colors.grey),
                     borderRadius: const BorderRadius.all(Radius.circular(50)),
-                    color: state.value & VENDOR_TYPE_PARTICULAR != 0 ? Colors.blue : Colors.transparent
-                ),
+                    color: state.value & VENDOR_TYPE_PARTICULAR != 0
+                        ? Colors.blue
+                        : Colors.transparent),
                 alignment: Alignment.center,
                 child: Text(
                   'Particular',
                   style: TextStyle(
-                      color: state.value & VENDOR_TYPE_PARTICULAR != 0 ? Colors.white : Colors.black
-                  ),
+                      color: state.value & VENDOR_TYPE_PARTICULAR != 0
+                          ? Colors.white
+                          : Colors.black),
                 ),
               ),
             ),
-            const SizedBox(width: 10,),
+            const SizedBox(
+              width: 10,
+            ),
             GestureDetector(
-              onTap: (){
-                if(state.value & VENDOR_TYPE_PROFESSIONAL != 0){
-                  if(state.value & VENDOR_TYPE_PARTICULAR != 0)
+              onTap: () {
+                if (state.value & VENDOR_TYPE_PROFESSIONAL != 0) {
+                  if (state.value & VENDOR_TYPE_PARTICULAR != 0)
                     state.didChange(state.value & ~VENDOR_TYPE_PROFESSIONAL);
                   else
                     state.didChange(VENDOR_TYPE_PARTICULAR);
@@ -61,17 +66,21 @@ class VendorTypeField extends StatelessWidget {
                 height: 50,
                 width: 120,
                 decoration: BoxDecoration(
-                    border: Border.all(color: state.value & VENDOR_TYPE_PROFESSIONAL != 0 ?
-                      Colors.transparent : Colors.grey),
+                    border: Border.all(
+                        color: state.value & VENDOR_TYPE_PROFESSIONAL != 0
+                            ? Colors.transparent
+                            : Colors.grey),
                     borderRadius: const BorderRadius.all(Radius.circular(50)),
-                    color: state.value & VENDOR_TYPE_PROFESSIONAL != 0 ? Colors.blue : Colors.transparent
-                ),
+                    color: state.value & VENDOR_TYPE_PROFESSIONAL != 0
+                        ? Colors.blue
+                        : Colors.transparent),
                 alignment: Alignment.center,
                 child: Text(
                   'Profissional',
                   style: TextStyle(
-                      color: state.value & VENDOR_TYPE_PROFESSIONAL != 0 ? Colors.white : Colors.black
-                  ),
+                      color: state.value & VENDOR_TYPE_PROFESSIONAL != 0
+                          ? Colors.white
+                          : Colors.black),
                 ),
               ),
             ),

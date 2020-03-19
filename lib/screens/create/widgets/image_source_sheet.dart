@@ -31,7 +31,7 @@ class ImageSourceSheet extends StatelessWidget {
                     await ImagePicker.pickImage(source: ImageSource.gallery);
                 onImageSelected(image);
               },
-            ),
+            )
           ],
         );
       },

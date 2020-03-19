@@ -5,10 +5,10 @@ import 'package:xlo/screens/signup/widgets/password_field.dart';
 
 class SignUpScreen extends StatefulWidget {
   @override
-  _SignUpScreemState createState() => _SignUpScreemState();
+  _SignUpScreenState createState() => _SignUpScreenState();
 }
 
-class _SignUpScreemState extends State<SignUpScreen> {
+class _SignUpScreenState extends State<SignUpScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   SignUpBloc _signUpBloc;
@@ -41,13 +41,13 @@ class _SignUpScreemState extends State<SignUpScreen> {
                 padding: const EdgeInsets.all(16),
                 children: <Widget>[
                   const FieldTitle(
-                    title: 'Nome',
-                    subtitle: 'Insira nome completo.',
+                    title: 'Apelido',
+                    subtitle: 'Como aparecerá em seus anúncios.',
                   ),
                   TextFormField(
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(),
-                      hintText: 'Exemplo: João s.',
+                      hintText: 'Exemplo: João S.',
                     ),
                     validator: (text) {
                       if (text.length < 6) return 'Apelido muito curto';
@@ -60,7 +60,7 @@ class _SignUpScreemState extends State<SignUpScreen> {
                     height: 26,
                   ),
                   const FieldTitle(
-                    title: 'Email',
+                    title: 'E-mail',
                     subtitle: 'Enviaremos um e-mail de confirmação.',
                   ),
                   TextFormField(
@@ -122,7 +122,7 @@ class _SignUpScreemState extends State<SignUpScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         const Text(
-                          'Já tenho uma conta? ',
+                          'Já tem uma conta? ',
                           style: TextStyle(fontSize: 16),
                         ),
                         GestureDetector(

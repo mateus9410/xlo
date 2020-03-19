@@ -1,14 +1,19 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:xlo/screens/create/widgets/image_source_sheet.dart';
 
 class ImagesField extends StatelessWidget {
+  ImagesField({this.onSaved, this.initialValue});
+
+  final FormFieldSetter<List> onSaved;
+  final List initialValue;
+
   @override
   Widget build(BuildContext context) {
     return FormField<List>(
-      initialValue: [],
+      initialValue: initialValue,
+      onSaved: onSaved,
       validator: (images) {
-        if (images.isEmpty) return 'Campo obrigatorio';
+        if (images.isEmpty) return 'Campo obrigatório';
         return null;
       },
       builder: (state) {
@@ -69,7 +74,7 @@ class ImagesField extends StatelessWidget {
                                         textColor: Colors.red,
                                         onPressed: () {
                                           state.didChange(
-                                              state.value..remove(index));
+                                              state.value..removeAt(index));
                                           Navigator.of(context).pop();
                                         },
                                       )
@@ -81,6 +86,7 @@ class ImagesField extends StatelessWidget {
                         padding: const EdgeInsets.only(
                             left: 16, top: 16, bottom: 16),
                         child: CircleAvatar(
+                          radius: 52,
                           backgroundImage: FileImage(state.value[index]),
                         ),
                       ),

@@ -1,10 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:xlo/blocs/login/field_state.dart';
 import 'package:xlo/blocs/login/login_bloc.dart';
-import 'package:xlo/screens/home/widgets/or_divider.dart';
 import 'package:xlo/screens/login/widgets/facebook_button.dart';
 import 'package:xlo/screens/login/widgets/login_button.dart';
+import 'package:xlo/screens/login/widgets/or_divider.dart';
 import 'package:xlo/screens/signup/signup_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -24,7 +23,7 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
@@ -52,7 +51,7 @@ class _LoginScreenState extends State<LoginScreen> {
               StreamBuilder<FieldState>(
                 stream: _loginBloc.outEmail,
                 initialData: FieldState(),
-                builder: (conteixt, snapshot) {
+                builder: (context, snapshot) {
                   return TextField(
                     keyboardType: TextInputType.emailAddress,
                     autocorrect: false,
@@ -73,19 +72,17 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: Text(
                         'Senha',
                         style: TextStyle(
-                          color: Colors.grey[800],
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700,
-                        ),
+                            color: Colors.grey[800],
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700),
                       ),
                     ),
                     GestureDetector(
                       child: Text(
                         'Esqueceu sua senha?',
                         style: TextStyle(
-                          decoration: TextDecoration.underline,
-                          color: Colors.blue,
-                        ),
+                            decoration: TextDecoration.underline,
+                            color: Colors.blue),
                       ),
                       onTap: () {
                         //Navigator.of(context).push(MaterialPageRoute(
@@ -121,7 +118,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     const Text(
-                      'Não tem uma conta ?',
+                      'Não tem uma conta? ',
                       style: TextStyle(fontSize: 16),
                     ),
                     GestureDetector(
@@ -140,7 +137,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     )
                   ],
                 ),
-              ),
+              )
             ],
           ),
         ),

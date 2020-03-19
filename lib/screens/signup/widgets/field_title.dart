@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class FieldTitle extends StatelessWidget {
@@ -10,7 +9,7 @@ class FieldTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 2, bottom: 4),
+      padding: const EdgeInsets.only(left: 3, bottom: 4),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: <Widget>[
@@ -28,7 +27,7 @@ class FieldTitle extends StatelessWidget {
               color: Colors.grey,
               fontSize: 12,
             ),
-          ),
+          )
         ],
       ),
     );
